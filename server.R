@@ -42,7 +42,7 @@ shinyServer(function(input, output) {
         mutate(date = as.Date(date)+7,
                rollingCasesRate_uk = lag(cumCasesBySpecimenDateRate, n=7) - 
                    cumCasesBySpecimenDateRate) %>%
-        filter(date >= as.Date('2020-04-01'),
+        filter(date >= as.Date('2021-01-01'),
                date <= format(Sys.Date(), format="%Y-%m-%d")) %>%
         select(date, rollingCasesRate_uk)
     
@@ -63,7 +63,7 @@ shinyServer(function(input, output) {
             mutate(date = as.Date(date)+7,
                    rollingCasesRate_ltla = abs(lag(cumCasesBySpecimenDateRate, n=7)) - 
                        cumCasesBySpecimenDateRate) %>%
-            filter(date >= as.Date('2020-04-01'),
+            filter(date >= as.Date('2021-01-01'),
                    date <= format(Sys.Date(), format="%Y-%m-%d")) %>%
             select(date, rollingCasesRate_ltla)
         
